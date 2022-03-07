@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+<link type="text/css" rel="stylesheet" href="styles.css">
+<script>
+function validate() {
+	var uname = document.getElementById("username").value;
+	var pwd = document.getElementById("password").value;
+	if(uname.length ==0) {
+	alert("Please enter username")
+	return false;
+	} else if (pwd.length == 0) {
+	alert("Please enter password")
+	return false;
+	} else if (pwd.length < 6 || pwd.length > 12) {
+	alert("Please enter password between 6 and 12 characters in length.")
+	return false;
+	}else {
+		alert("Welcome :" + uname);
+	}
+}
+</script>
+</head>
+<body>
+	<a href="index.jsp">Home</a>
+	<br />
+	<br />
+	<h2 class="notes">hHello and welcome to Login page</h2>
+	<form class="form-style" action="LoginController" onsubmit="return validate()" method="post">
+		<table>
+			<tr>
+				<td><label>Username</label></td>
+				<td><input type="text" size="25" name="username" id="username"
+					placeholder="please enter username"></td>
+			</tr>
+			<tr>
+				<td><label>Password</label></td>
+				<td><input type="password" size="15" name="password" id="password"> 
+				<input type="submit" value="Sign in">
+				</td>
+			</tr>
+
+			<tr>
+
+				<td><label>Keep Me Signed In</label></td>
+				<td><input type="button"> <a href="Home.html">Forgot
+						Password</a></td>
+			</tr>
+
+		</table>
+	</form>
+</body>
+</html>
