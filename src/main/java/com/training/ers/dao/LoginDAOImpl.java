@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +137,36 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 		
 		return true;
+	}
+
+	@Override
+	public List<User> getUsers() {
+		con = DBConnection.getConnection();
+		System.out.println("Getting all users");
+		List<User> users = new ArrayList<User>();
+		
+		Statement stat = null;
+		try {
+			stat = con.createStatement();
+			ResultSet res = stat.executeQuery("select * from users");
+			while(res.next()) {
+				User user = new User();
+				user.setUserId(res.getInt(1));
+				user.setUsername(res.getString(2));
+				user.setPassword(res.getString(3));
+				user.setGender(res.getString(4));
+				user.setNotification(res.getString(5));
+				user.setQualification(res.getString(6));
+				users.add(user);
+			}
+			
+			res.close();
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
 	}
 	
 	/*
