@@ -168,6 +168,36 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 		return users;
 	}
+
+	@Override
+	public List<User> getUsersByUsername(String username) {
+		con = DBConnection.getConnection();
+		System.out.println("Getting all users with username : "+username);
+		List<User> users = new ArrayList<User>();
+		
+		Statement stat = null;
+		try {
+			stat = con.createStatement();
+			ResultSet res = stat.executeQuery("select * from users where username = '"+username+"'");
+			while(res.next()) {
+				User user = new User();
+				user.setUserId(res.getInt(1));
+				user.setUsername(res.getString(2));
+				user.setPassword(res.getString(3));
+				user.setGender(res.getString(4));
+				user.setNotification(res.getString(5));
+				user.setQualification(res.getString(6));
+				users.add(user);
+			}
+			
+			res.close();
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 	
 	/*
 	

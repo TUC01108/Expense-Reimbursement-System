@@ -3,10 +3,12 @@ package com.training.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.training.ers.dao.LoginDAO;
 import com.training.ers.dao.LoginDAOImpl;
@@ -44,6 +46,9 @@ public class LoginController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
+		
 		out.println("<html><body>");
 		
 		LoginDAO loginDAO = new LoginDAOImpl();
@@ -51,8 +56,14 @@ public class LoginController extends HttpServlet {
 		boolean result = loginDAO.validate(username, password);
 		
 		if(result) {
+			session.setAttribute("message", "Valid User");
+			
 			out.println("Welcome, "+username);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+			dispatcher.include(request, response);
 		} else {
+			session.setAttribute("message", "Invalid User");
+			
 			out.println("Your username/password is incorrect , please <a href=login.html>login</a> again.");
 		}
 		

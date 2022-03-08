@@ -9,6 +9,7 @@ public interface LoginDAO {
 	public boolean register(User user);
 	public boolean validate(String username, String password);
 	public List<User> getUsers();
+	public List<User> getUsersByUsername(String username);
 	//public boolean isLoginExists(String username);
 	//public boolean apply(Customer customer, long balance, String accountName);
 	

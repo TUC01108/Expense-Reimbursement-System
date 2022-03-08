@@ -17,8 +17,6 @@ function validate() {
 	} else if (pwd.length < 6 || pwd.length > 12) {
 	alert("Please enter password between 6 and 12 characters in length.")
 	return false;
-	}else {
-		alert("Welcome :" + uname);
 	}
 }
 </script>
@@ -38,7 +36,7 @@ function validate() {
 			<tr>
 				<td><label>Password</label></td>
 				<td><input type="password" size="15" name="password" id="password"> 
-				<input type="submit" value="Sign in">
+				<input type="submit" value="Sign in" id="btnSubmit">
 				</td>
 			</tr>
 
