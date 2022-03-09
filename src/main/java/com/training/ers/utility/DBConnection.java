@@ -14,7 +14,10 @@ public class DBConnection {
 		Connection con = null;
 		
 		try {
-			FileReader rdr = new FileReader("C:\\mydb.properties");
+			// For server use one below-
+			// FileReader rdr = new FileReader("C:\\mydb.properties");
+			// For local use below-
+			FileReader rdr = new FileReader("C:\\mydb_local.properties");
 			Properties properties = new Properties();
 			properties.load(rdr);
 			String driver = properties.getProperty("driver");
