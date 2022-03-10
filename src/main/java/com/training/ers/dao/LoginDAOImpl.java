@@ -8,11 +8,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.training.ers.utility.DBConnection;
 import com.training.model.User;
 
 public class LoginDAOImpl implements LoginDAO {
 	
+	private static Logger logger = Logger.getLogger(LoginDAOImpl.class);	
 	Connection con = DBConnection.getConnection();
 
 	@Override
@@ -65,10 +68,14 @@ public class LoginDAOImpl implements LoginDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (rows == 0)
+		if (rows == 0) {
+			logger.info(user.getUsername()+" has failed to register at :"+new java.util.Date());
 			return false;
-		else
+		}
+		else {
+			logger.info(user.getUsername()+" has registered at :"+new java.util.Date());
 			return true;
+		}
 	}
 
 	@Override
@@ -133,9 +140,10 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 		
 		if(users.size() == 0) {
+			logger.info(username+" has failed to login at :"+new java.util.Date());
 			return false;
 		}
-		
+		logger.info(user.getUsername()+" has logged in at :"+new java.util.Date());
 		return true;
 	}
 
