@@ -74,18 +74,14 @@ form {
 </style>
 <script type="text/javascript">
 	function validateSignUpForm() {
-		var uname1 = document.getElementById("username").value;
+		var username = document.getElementsByName("username").value;
 		var pwd = document.forms[0].elements[1].value;
 		var confirmpwd = document.forms[0].elements[2].value;
-		var radio1 = document.getElementById('radio1').checked;
-		var radio2 = document.getElementById('radio2').checked;
-		var radio3 = document.getElementById('radio3').checked;
-		var noti1 = document.getElementById('noti1').checked;
-		var noti2 = document.getElementById('noti2').checked;
-		var noti3 = document.getElementById('noti3').checked;
-		var qual = document.signupform.qualification.options.selectedIndex;
+		var firstname = document.getElementsByName('first_name').checked;
+		var lastname = document.forms[0].elements[4].value;
+		var email = document.forms[0].elements[5].value;
 
-		if (uname1.length == 0) {
+		if (username.length == 0) {
 			alert("Please type a username");
 			return false;
 		} else if (pwd.length == 0) {
@@ -94,14 +90,14 @@ form {
 		} else if (confirmpwd.length == 0) {
 			alert("Please type a confirm password");
 			return false;
-		} else if (radio1 == 0 && radio2 == 0 && radio3 == 0) {
-			alert("Please select a gender");
+		} else if (firstname.length == 0) {
+			alert("Please enter a first name");
 			return false;
-		} else if (noti1 == 0 && noti2 == 0 && noti3 == 0) {
-			alert("Please select a notifcation type");
+		} else if (lastname.length == 0) {
+			alert("Please enter a last name");
 			return false;
-		} else if (qual == 0) {
-			alert("Please select a qualification");
+		} else if (email.length == 0) {
+			alert("Please enter an email");
 			return false;
 		}
 		if (pwd != confirmpwd) {
@@ -110,17 +106,7 @@ form {
 		}
 
 	}
-	function addInput() {
-		var mainDiv = document.getElementById('myDiv1');
-		var marriedButton = document.getElementById('marriedButton');
-
-		var newTextBox = document.createElement('input');
-		newTextBox.type = 'text';
-		newTextBox.setAttribute('id', 'spousename');
-
-		marriedButton.innerText = "Spouse name : "
-		mainDiv.append(newTextBox);
-	}
+	
 </script>
 </head>
 <body class="text-center bg-dark">
