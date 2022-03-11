@@ -6,76 +6,131 @@ public class User {
 	private int userId;
 	private String username;
 	private String password;
-	private String gender;
-	private String notification;
-	private String qualification;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private int login_id;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int userId, String username, String password, String gender, String notification,
-			String qualification) {
+	
+
+	public User(int userId, String username, String password, String firstname, String lastname, String email) {
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
-		this.gender = gender;
-		this.notification = notification;
-		this.qualification = qualification;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
 	}
+
+
+
+	public User(int userId, String username, String password, String firstname, String lastname, String email,
+			int login_id) {
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.login_id = login_id;
+	}
+
+
 
 	public int getUserId() {
 		return userId;
 	}
 
+
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getGender() {
-		return gender;
+
+
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getNotification() {
-		return notification;
+
+
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setNotification(String notification) {
-		this.notification = notification;
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
-	public String getQualification() {
-		return qualification;
+
+
+	public String getEmail() {
+		return email;
 	}
 
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+
+
+	public int getLogin_id() {
+		return login_id;
+	}
+
+
+
+	public void setLogin_id(int login_id) {
+		this.login_id = login_id;
+	}
+
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gender, notification, password, qualification, userId, username);
+		return Objects.hash(email, firstname, lastname, login_id, password, userId, username);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -86,16 +141,23 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(gender, other.gender) && Objects.equals(notification, other.notification)
-				&& Objects.equals(password, other.password) && Objects.equals(qualification, other.qualification)
-				&& userId == other.userId && Objects.equals(username, other.username);
+		return Objects.equals(email, other.email) && Objects.equals(firstname, other.firstname)
+				&& Objects.equals(lastname, other.lastname) && login_id == other.login_id
+				&& Objects.equals(password, other.password) && userId == other.userId
+				&& Objects.equals(username, other.username);
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", gender=" + gender
-				+ ", notification=" + notification + ", qualification=" + qualification + "]";
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", firstname="
+				+ firstname + ", lastname=" + lastname + ", email=" + email + ", login_id=" + login_id + "]";
 	}
+
+	
+
+	
 	
 	
 }

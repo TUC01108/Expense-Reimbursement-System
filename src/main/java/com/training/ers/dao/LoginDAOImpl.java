@@ -27,12 +27,18 @@ public class LoginDAOImpl implements LoginDAO {
 
 		try {
 			//if(accounttype.equals("C")) {
+			stat = con.prepareStatement("insert into login values(default,?,?)");
+			stat.setString(1, user.getUsername());
+			stat.setString(2, user.getPassword());
+			rows = stat.executeUpdate();
+			System.out.println(rows + " user added to login table successfully");
+			
 			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?)");
 			stat.setString(1, user.getUsername());
 			stat.setString(2, user.getPassword());
-			stat.setString(3, user.getGender());
-			stat.setString(4, user.getNotification());
-			stat.setString(5, user.getQualification());
+			stat.setString(3, user.getFirstname());
+			stat.setString(4, user.getLastname());
+			stat.setString(5, user.getEmail());
 			
 			rows = stat.executeUpdate();
 			System.out.println(rows + " user added to database");
@@ -162,10 +168,11 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setUserId(res.getInt(1));
 				user.setUsername(res.getString(2));
 				user.setPassword(res.getString(3));
-				user.setGender(res.getString(4));
-				user.setNotification(res.getString(5));
-				user.setQualification(res.getString(6));
+				user.setFirstname(res.getString(4));
+				user.setLastname(res.getString(5));
+				user.setEmail(res.getString(6));
 				users.add(user);
+
 			}
 			
 			res.close();
@@ -192,9 +199,9 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setUserId(res.getInt(1));
 				user.setUsername(res.getString(2));
 				user.setPassword(res.getString(3));
-				user.setGender(res.getString(4));
-				user.setNotification(res.getString(5));
-				user.setQualification(res.getString(6));
+				user.setFirstname(res.getString(4));
+				user.setLastname(res.getString(5));
+				user.setEmail(res.getString(6));
 				users.add(user);
 			}
 			
