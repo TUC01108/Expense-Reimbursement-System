@@ -9,7 +9,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Search For User</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
 </head>
 <body>
 <% 
@@ -26,14 +31,16 @@
 	Iterator<User> iterator = users.iterator();
 	%>
 	<h1>List of all the users where username is <%= searchname %></h1>
-	<table border="2" cellspacing="10" cellpadding="10">
+	<table class="table table-dark">
+	<thead>
 		<th>User Id</th>
 		<th>Username</th>
 		<th>Password</th>
-		<th>Gender</th>
-		<th>Notification</th>
-		<th>Qualification</th>
-
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Login_id</th>
+	</thead>
 		<%
 		//while (iterator.hasNext()) {
 			//User user = iterator.next();
@@ -51,13 +58,17 @@
         <td>    <%=  obj.getUserId()        %>    </td>
         <td>    <%=  obj.getUsername()        %>    </td> 
         <td>    <%=  obj.getPassword()         %>    </td>
-        <td>    <%=  obj.getGender()        %>    </td>
-        <td>    <%=  obj.getNotification()     %>    </td>
-        <td>    <%=  obj.getQualification()    %>    </td>
+        <td>    <%=  obj.getFirstname()        %>    </td>
+        <td>    <%=  obj.getLastname()     %>    </td>
+        <td>    <%=  obj.getEmail()    %>    </td>
+        <td>    <%=  obj.getLogin_id()    %>    </td>
         </tr>
 		<%}%>
 </table>
 <a href="searchUser.jsp">Search again</a>
+<br/>
+<a href="welcome.jsp">Home Page</a>
+<br/>
 <a href="index.jsp">Logout</a>
 </body>
 </html>

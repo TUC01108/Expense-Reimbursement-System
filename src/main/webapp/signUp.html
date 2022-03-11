@@ -74,10 +74,10 @@ form {
 </style>
 <script type="text/javascript">
 	function validateSignUpForm() {
-		var username = document.getElementsByName("username").value;
+		var username = document.forms[0].elements[0].value;
 		var pwd = document.forms[0].elements[1].value;
 		var confirmpwd = document.forms[0].elements[2].value;
-		var firstname = document.getElementsByName('first_name').checked;
+		var firstname = document.forms[0].elements[3].value;
 		var lastname = document.forms[0].elements[4].value;
 		var email = document.forms[0].elements[5].value;
 
