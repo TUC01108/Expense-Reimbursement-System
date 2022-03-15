@@ -15,5 +15,8 @@
 Enter Username to search : <input type="text" name="searchname">
 <input type="submit" value="Search">
 </form>
+<a href="welcome.jsp">Back</a>
+<br/>
+<a href="index.jsp">Logout</a>
 </body>
 </html>

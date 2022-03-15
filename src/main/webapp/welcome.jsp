@@ -11,5 +11,8 @@
 <h2>You are logged in as : <%= (String)session.getAttribute("username") %></h2>
 <h1><a href="displayUserDetails.jsp">View All Users</a></h1>
 <h1><a href="searchUser.jsp" id="searchUsers">Search Users</a></h1>
+<h1><a href="createNewExpense.jsp" id="createNewExpense">Create New Expense</a></h1>
+<br/>
+<a href="index.jsp">Logout</a>
 </body>
 </html>

@@ -11,12 +11,14 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.training.ers.utility.DBConnection;
+import com.training.model.Manager;
 import com.training.model.User;
 
 public class LoginDAOImpl implements LoginDAO {
 	
 	private static Logger logger = Logger.getLogger(LoginDAOImpl.class);	
 	Connection con = DBConnection.getConnection();
+	List<User> users = new ArrayList<User>();
 
 	@Override
 	public boolean register(User user) {
@@ -33,12 +35,26 @@ public class LoginDAOImpl implements LoginDAO {
 			rows = stat.executeUpdate();
 			System.out.println(rows + " user added to login table successfully");
 			
-			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?)");
+			int login_id = 0;
+			
+			stat = con.prepareStatement("select id from login where username = ?");
+			stat.setString(1, user.getUsername());
+			ResultSet res = stat.executeQuery();
+			while(res.next()) {
+				User user1 = new User();
+				user1.setUserId(res.getInt(1));
+				users.add(user1);
+				login_id = user1.getUserId();
+			}
+			
+			
+			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?,?)");
 			stat.setString(1, user.getUsername());
 			stat.setString(2, user.getPassword());
 			stat.setString(3, user.getFirstname());
 			stat.setString(4, user.getLastname());
 			stat.setString(5, user.getEmail());
+			stat.setInt(6, login_id);
 			
 			rows = stat.executeUpdate();
 			System.out.println(rows + " user added to database");
@@ -171,6 +187,7 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setFirstname(res.getString(4));
 				user.setLastname(res.getString(5));
 				user.setEmail(res.getString(6));
+				user.setLogin_id(res.getInt(7));
 				users.add(user);
 
 			}
@@ -202,6 +219,7 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setFirstname(res.getString(4));
 				user.setLastname(res.getString(5));
 				user.setEmail(res.getString(6));
+				user.setLogin_id(res.getInt(7));
 				users.add(user);
 			}
 			
@@ -212,6 +230,12 @@ public class LoginDAOImpl implements LoginDAO {
 			e.printStackTrace();
 		}
 		return users;
+	}
+
+	@Override
+	public boolean register(Manager manager) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 	/*
