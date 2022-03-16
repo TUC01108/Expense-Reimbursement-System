@@ -49,6 +49,9 @@
 <h1><a href="displayUserDetails.jsp">View All Users</a></h1>
 <h1><a href="searchUser.jsp" id="searchUsers">Search Users</a></h1>
 <h1><a href="createNewExpense.jsp" id="createNewExpense">Create New Expense</a></h1>
+<h1><a href="allPendingReimbursements.jsp" id="viewPending">View All Pending Reimbursements</a></h1>
+<h1><a href="allResolvedReimbursements.jsp" id="viewResolved">View All Resolved Reimbursements</a></h1>
+<h1><a href="employeeInfo.jsp" id="viewInfo">View Employee Information</a></h1>
 
 </main>
 <a href="index.jsp">Logout</a>
