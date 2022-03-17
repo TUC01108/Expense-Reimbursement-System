@@ -61,7 +61,7 @@ footer {
 		
 	<%
 	LoginDAO loginDAO = new LoginDAOImpl();
-	List<User> users = loginDAO.getUsers();
+	List<User> users = loginDAO.getUsersByUsername(username);
 	Iterator<User> iterator = users.iterator();
 	%>
 	<h4 align="center">=================================================</h4>

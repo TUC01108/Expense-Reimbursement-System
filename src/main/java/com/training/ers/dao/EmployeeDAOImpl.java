@@ -37,6 +37,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				reimbursement.setAmount(res.getLong(4));
 				reimbursement.setCreated_date(res.getDate(5));
 				reimbursement.setSubmitted_date(res.getDate(6));
+				reimbursement.setUsername(res.getString(7));			
 				reimbursements.add(reimbursement);
 			}
 			

@@ -10,20 +10,30 @@ public class Reimbursement {
 	private long amount;
 	private Date created_date;
 	private Date submitted_date;
+	private String username;
 	
 	public Reimbursement() {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public Reimbursement(int reimbursementId, String r_type, String status, long amount, Date created_date,
-			Date submitted_date) {
+			Date submitted_date, String username) {
 		this.reimbursementId = reimbursementId;
 		this.r_type = r_type;
 		this.status = status;
 		this.amount = amount;
 		this.created_date = created_date;
 		this.submitted_date = submitted_date;
+		this.username = username;
 	}
+
+
+
+	
+
+
 
 	public int getReimbursementId() {
 		return reimbursementId;
@@ -72,11 +82,25 @@ public class Reimbursement {
 	public void setSubmitted_date(Date submitted_date) {
 		this.submitted_date = submitted_date;
 	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, created_date, r_type, reimbursementId, status, submitted_date);
+		return Objects.hash(amount, created_date, r_type, reimbursementId, status, submitted_date, username);
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -89,14 +113,20 @@ public class Reimbursement {
 		Reimbursement other = (Reimbursement) obj;
 		return amount == other.amount && Objects.equals(created_date, other.created_date)
 				&& Objects.equals(r_type, other.r_type) && reimbursementId == other.reimbursementId
-				&& Objects.equals(status, other.status) && Objects.equals(submitted_date, other.submitted_date);
+				&& Objects.equals(status, other.status) && Objects.equals(submitted_date, other.submitted_date)
+				&& Objects.equals(username, other.username);
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "Reimbursement [reimbursementId=" + reimbursementId + ", r_type=" + r_type + ", status=" + status
-				+ ", amount=" + amount + ", created_date=" + created_date + ", submitted_date=" + submitted_date + "]";
+				+ ", amount=" + amount + ", created_date=" + created_date + ", submitted_date=" + submitted_date
+				+ ", username=" + username + "]";
 	}
+
+	
 	
 	
 }
