@@ -161,17 +161,35 @@ public class LoginDAOImpl implements LoginDAO {
 	public boolean validate(String username, String password) {
 		
 		System.out.println("Searching for user with username : " + username);
-		PreparedStatement stat;
+		PreparedStatement stat, stat2;
 		boolean userValid = false;
 		con = DBConnection.getConnection();
 		User user = new User();
 		List<User> users = new ArrayList<User>();
+		Manager manager = new Manager();
+		List<Manager> managers = new ArrayList<Manager>();
 
 		try {
+			stat2 = con.prepareStatement("select accounttype from users where username = ? and password = ? ");
+			stat2.setString(1, username);
+			stat2.setString(2, password);
+			
+			ResultSet res2 = stat2.executeQuery();
+			
+			while (res2.next()) {
+				user = new User();
+				user.setAccounttype(res2.getString(1));
+				users.add(user);
+				
+			}
+			String type = user.getAccounttype();
+			System.out.println(type);
+			
+			if(type.equals("E")) {
 			stat = con.prepareStatement("select * from users where username = ? and password = ? ");
 			stat.setString(1, username);
 			stat.setString(2, password);
-
+			
 			ResultSet res = stat.executeQuery();
 			
 			while (res.next()) {
@@ -206,6 +224,23 @@ public class LoginDAOImpl implements LoginDAO {
 			res.close();
 			stat.close();
 			con.close();
+			} else {
+				
+				stat = con.prepareStatement("select * from managers where username = ? and password = ? ");
+				stat.setString(1, username);
+				stat.setString(2, password);
+				
+				ResultSet res = stat.executeQuery();
+				
+				while (res.next()) {
+					manager = new Manager();
+					manager.setManagerId(res.getInt(1));
+					manager.setUsername(res.getString(2));
+					manager.setPassword(res.getString(3));
+					managers.add(manager);
+					
+				}
+			}
 			/*
 			if(customer.getStatus() != null && customer.getStatus().equals("N")) {
 				//System.out.println("Account has not been approved yet. Administrator will update in a timely manner.");
