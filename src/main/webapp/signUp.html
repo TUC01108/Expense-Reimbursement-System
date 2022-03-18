@@ -60,6 +60,12 @@ form {
 	border-top-right-radius: 0;
 }
 
+.form-signin input[type="radio"] {
+	margin-bottom: 5px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
 .form-signin input[type="button"] {
 	margin-bottom: 5px;
 	border-bottom-right-radius: 0;
@@ -114,7 +120,7 @@ form {
 			return false;
 		}
 	}
-	
+	/*
 	function addManagerInput() {
 		var mainDiv = document.getElementById('myDiv1');
 		var managerButton = document.getElementById('managerButton');
@@ -133,6 +139,7 @@ form {
 		document.getElementById('myDiv1').remove();
 		
 		 } 
+	*/
 </script>
 </head>
 <body class="text-center bg-dark">
@@ -191,7 +198,7 @@ form {
 				<div class="form-floating">
 				<h4 class="text-white">Manager?</h4>
 					<span id="managerButton"> <input type="radio"
-						value="Manager ??" onClick="addManagerInput()">
+						value="Manager?" name="manager">
 					</span>
 					<div id="myDiv1"></div>
 				</div>
@@ -199,7 +206,8 @@ form {
 				<button class="w-40 btn btn-md btn-primary" type="submit"
 					value="SignUp">Signup</button>
 				<button class="w-40 btn btn-md btn-danger" type="reset"
-					value="Clear" onClick="fun()">Reset</button>
+					value="Clear">Reset</button>
+				
 			</form>
 		</main>
 

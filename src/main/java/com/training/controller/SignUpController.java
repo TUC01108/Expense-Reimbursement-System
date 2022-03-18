@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.training.ers.dao.LoginDAO;
 import com.training.ers.dao.LoginDAOImpl;
+import com.training.model.Manager;
 import com.training.model.User;
 
 /**
@@ -41,6 +42,7 @@ public class SignUpController extends HttpServlet {
 		String firstname = request.getParameter("first_name");
 		String lastname = request.getParameter("last_name");
 		String email = request.getParameter("email");
+		String type = request.getParameter("manager");
 
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
@@ -52,11 +54,14 @@ public class SignUpController extends HttpServlet {
 
 		// User user = new User(-1, username, password, gender, finalNotification,
 		// qualification);
-		User user = new User(-1, username, password, firstname, lastname, email);
+		PrintWriter out = response.getWriter();	
+		System.out.println(type);
+		if(type == null) {
+			User user = new User(-1, username, password, firstname, lastname, email);
 		LoginDAO loginDAO = new LoginDAOImpl();
 		boolean result = loginDAO.register(user);
 		
-		PrintWriter out = response.getWriter();		
+			
 
 		if (result) {
 			session.setAttribute("message", "Valid User");
@@ -68,6 +73,25 @@ public class SignUpController extends HttpServlet {
 session.setAttribute("message", "Invalid User");
 			
 			out.println("Something is incorrect , please <a href=signUp.html>signup</a> again.");
+		}
+		} else {
+			Manager manager = new Manager(-1, username, password, firstname, lastname, email);
+			LoginDAO loginDAO = new LoginDAOImpl();
+			boolean result = loginDAO.register(manager);
+			
+
+			if (result) {
+				session.setAttribute("message", "Valid User");
+
+				//out.println("You've successfully signed up, " + username);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher.include(request, response);
+			} else {
+	session.setAttribute("message", "Invalid User");
+				
+				out.println("Something is incorrect , please <a href=signUp.html>signup</a> again.");
+			}
+			
 		}
 		out.println("</body></html>");
 	}

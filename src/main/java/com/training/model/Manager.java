@@ -14,6 +14,19 @@ public class Manager {
 	public Manager() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Manager(int managerId, String username, String password, String firstname, String lastname, String email) {
+		this.managerId = managerId;
+		this.username = username;
+		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+
+
 
 	public Manager(int managerId, String username, String password, String firstname, String lastname, String email,
 			int login_id) {

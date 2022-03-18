@@ -53,10 +53,7 @@
   </header>
     <main class="px-3">
 	<% String username = (String)session.getAttribute("username"); %>
-		<h4>You are logged in as : 
-		<%= username %> 
-		and the message is : 
-		<%= session.getAttribute("message") %></h4>
+	
 	<%
 	LoginDAO loginDAO = new LoginDAOImpl();
 	List<User> users = loginDAO.getUsers();

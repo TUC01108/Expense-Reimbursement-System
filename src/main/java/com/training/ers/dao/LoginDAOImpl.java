@@ -19,6 +19,7 @@ public class LoginDAOImpl implements LoginDAO {
 	private static Logger logger = Logger.getLogger(LoginDAOImpl.class);	
 	Connection con = DBConnection.getConnection();
 	List<User> users = new ArrayList<User>();
+	List<Manager> managers = new ArrayList<Manager>();
 
 	@Override
 	public boolean register(User user) {
@@ -96,6 +97,62 @@ public class LoginDAOImpl implements LoginDAO {
 		}
 		else {
 			logger.info(user.getUsername()+" has registered at :"+new java.util.Date());
+			return true;
+		}
+	}
+	
+	@Override
+	public boolean register(Manager manager) {
+		System.out.println("Adding manager : " + manager.getUsername());
+		PreparedStatement stat = null;
+		con = DBConnection.getConnection();
+		int rows = 0;
+
+		try {
+			//if(accounttype.equals("C")) {
+			stat = con.prepareStatement("insert into login values(default,?,?)");
+			stat.setString(1, manager.getUsername());
+			stat.setString(2, manager.getPassword());
+			rows = stat.executeUpdate();
+			System.out.println(rows + " manager added to login table successfully");
+			
+			int login_id = 0;
+			
+			stat = con.prepareStatement("select id from login where username = ?");
+			stat.setString(1, manager.getUsername());
+			ResultSet res = stat.executeQuery();
+			while(res.next()) {
+				Manager manager1 = new Manager();
+				manager1.setManagerId(res.getInt(1));
+				managers.add(manager1);
+				login_id = manager1.getManagerId();
+			}
+			
+			
+			stat = con.prepareStatement("insert into managers values(default,?,?,?,?,?,?)");
+			stat.setString(1, manager.getUsername());
+			stat.setString(2, manager.getPassword());
+			stat.setString(3, manager.getFirstname());
+			stat.setString(4, manager.getLastname());
+			stat.setString(5, manager.getEmail());
+			stat.setInt(6, login_id);
+			
+			rows = stat.executeUpdate();
+			System.out.println(rows + " manager added to database");
+			
+			stat.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (rows == 0) {
+			logger.info(manager.getUsername()+" has failed to register at :"+new java.util.Date());
+			return false;
+		}
+		else {
+			logger.info(manager.getUsername()+" has registered at :"+new java.util.Date());
 			return true;
 		}
 	}
@@ -234,11 +291,7 @@ public class LoginDAOImpl implements LoginDAO {
 		return users;
 	}
 
-	@Override
-	public boolean register(Manager manager) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 	
 	/*
 	
