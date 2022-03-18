@@ -56,22 +56,7 @@ public class SignUpController extends HttpServlet {
 		LoginDAO loginDAO = new LoginDAOImpl();
 		boolean result = loginDAO.register(user);
 		
-		PrintWriter out = response.getWriter();
-		/*
-		
-		
-		response.setContentType("text/html");
-
-		out.println("<html><body>");
-
-		out.println("Welcome, " + username);
-		out.println("You are registered successfully!");
-		out.println("Password : " + password);
-		out.println("First Name : " + firstname);
-		out.println("Last Name : " + lastname);
-		out.println("Email : " + email);
-		*/
-		
+		PrintWriter out = response.getWriter();		
 
 		if (result) {
 			session.setAttribute("message", "Valid User");

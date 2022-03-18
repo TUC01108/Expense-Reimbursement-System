@@ -189,7 +189,7 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setEmail(res.getString(6));
 				user.setLogin_id(res.getInt(7));
 				users.add(user);
-
+				
 			}
 			
 			res.close();
@@ -198,6 +198,7 @@ public class LoginDAOImpl implements LoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		logger.info("User has viewed all users at :"+new java.util.Date());
 		return users;
 	}
 
@@ -206,7 +207,7 @@ public class LoginDAOImpl implements LoginDAO {
 		con = DBConnection.getConnection();
 		System.out.println("Getting all users with username : "+username);
 		List<User> users = new ArrayList<User>();
-		
+		String user1 = "";
 		Statement stat = null;
 		try {
 			stat = con.createStatement();
@@ -221,7 +222,7 @@ public class LoginDAOImpl implements LoginDAO {
 				user.setEmail(res.getString(6));
 				user.setLogin_id(res.getInt(7));
 				users.add(user);
-			}
+				user1 = user.getUsername();			}
 			
 			res.close();
 			stat.close();
@@ -229,6 +230,7 @@ public class LoginDAOImpl implements LoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		logger.info("User has viewed username : "+user1+ " at :"+new java.util.Date());
 		return users;
 	}
 

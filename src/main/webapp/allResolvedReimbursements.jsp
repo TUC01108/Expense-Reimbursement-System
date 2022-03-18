@@ -54,7 +54,7 @@ footer {
 		<% String username = (String)session.getAttribute("username"); %>
 			<%
 			EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-				List<Reimbursement> reimbursements = employeeDAO.getPendingReimbursements(username);
+				List<Reimbursement> reimbursements = employeeDAO.getResolvedReimbursements(username);
 				Iterator<Reimbursement> iterator = reimbursements.iterator();
 			%>
 			<h4 align="center">List of All Resolved Reimbursements</h4>

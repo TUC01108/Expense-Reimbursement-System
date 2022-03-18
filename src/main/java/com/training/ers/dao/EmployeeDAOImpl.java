@@ -1,6 +1,7 @@
 package com.training.ers.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +16,7 @@ import com.training.model.User;
 
 public class EmployeeDAOImpl implements EmployeeDAO {
 	
-	private static Logger logger = Logger.getLogger(LoginDAOImpl.class);	
+	private static Logger logger = Logger.getLogger(EmployeeDAOImpl.class);	
 	Connection con = DBConnection.getConnection();
 	List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
 
@@ -28,7 +29,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		Statement stat = null;
 		try {
 			stat = con.createStatement();
-			ResultSet res = stat.executeQuery("select * from reimbursement where username = '"+username+"' and status = 'pending'");
+			ResultSet res = stat.executeQuery("select * from reimbursement where username = '"+username+"' and status = 'Created'");
 			while(res.next()) {
 				Reimbursement reimbursement = new Reimbursement();
 				reimbursement.setReimbursementId(res.getInt(1));
@@ -47,6 +48,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		logger.info(username+" viewed all pending reimbursements at :"+new java.util.Date());
+
 		return reimbursements;
 	}
 
@@ -77,7 +80,38 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		logger.info(username+" viewed all resolved reimbursements at :"+new java.util.Date());
+
 		return reimbursements;
+	}
+
+	@Override
+	public boolean createExpense(Reimbursement reimbursement) {
+		System.out.println("Creating a new Expense for : "); //+ user.getFirstname());
+		PreparedStatement stat = null;
+		con = DBConnection.getConnection();
+		int rows = 0;
+
+		try {
+			stat = con.prepareStatement("insert into reimbursement values(default,?,default,?,default,default,?)");
+			stat.setString(1, reimbursement.getR_type());
+			stat.setLong(2, reimbursement.getAmount());
+			stat.setString(3, "thomas");
+			rows = stat.executeUpdate();
+			System.out.println(rows + " create new expense added to database");
+			
+			
+			stat.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (rows == 0)
+			return false;
+		else
+			return true;
 	}
 
 }

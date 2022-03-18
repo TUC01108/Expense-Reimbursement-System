@@ -18,6 +18,26 @@ public class Reimbursement {
 
 	
 
+	public Reimbursement(int reimbursementId, String r_type, long amount) {
+		this.reimbursementId = reimbursementId;
+		this.r_type = r_type;
+		this.amount = amount;
+	}
+
+
+
+	public Reimbursement(int reimbursementId, String r_type, String status, long amount, Date created_date,
+			String username) {
+		this.reimbursementId = reimbursementId;
+		this.r_type = r_type;
+		this.status = status;
+		this.amount = amount;
+		this.created_date = created_date;
+		this.username = username;
+	}
+
+
+
 	public Reimbursement(int reimbursementId, String r_type, String status, long amount, Date created_date,
 			Date submitted_date, String username) {
 		this.reimbursementId = reimbursementId;

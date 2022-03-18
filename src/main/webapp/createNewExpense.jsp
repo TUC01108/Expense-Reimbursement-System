@@ -73,6 +73,7 @@
 </th>
 <td>Travel Expense</td><td>Expense related to client interview travel.</td>
 </tr>
+<!--
 <tr>
 <th scope="row">
 <div class="form-check">
@@ -81,7 +82,7 @@
    
    </label>
 </div>
-</th>
+</th> 
 <td>Certification</td><td>User for successfully obtaining approved certifications (2 maximum per calendar year).</td>
 </tr>
 <tr>
@@ -94,10 +95,10 @@
 </div>
 </th>
 <td>Relocation</td><td>Used when traveled more than 50 miles to a training location.</td>
-</tr>
+</tr> -->
 <tr>
 <td></td>
-<td><button type="button" class="btn btn-secondary">Cancel</a></button></td>
+<td><button type="button" class="btn btn-secondary"><a href="welcome.jsp">Cancel</a></button></td>
 
 <td><button type="button" class="btn btn-warning"><a href="createNewExpenseDetails.jsp">Create</a></button></td>
 
@@ -106,7 +107,6 @@
 </table>
  </main>
 <br/>
-<button type="button" class="btn btn-light"><a href="welcome.jsp">Back</a></button>
 <br/>
 <button type="button" class="btn btn-light"><a href="index.jsp">Logout</a></button>
 <footer class="mt-auto text-white-50">
