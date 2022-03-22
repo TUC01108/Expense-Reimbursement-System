@@ -62,7 +62,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		Statement stat = null;
 		try {
 			stat = con.createStatement();
-			ResultSet res = stat.executeQuery("select * from reimbursement where username = '"+username+"' and status = 'resolved'");
+			ResultSet res = stat.executeQuery("select * from reimbursement where username = '"+username+"' and status = 'Resolved'");
 			while(res.next()) {
 				Reimbursement reimbursement = new Reimbursement();
 				reimbursement.setReimbursementId(res.getInt(1));

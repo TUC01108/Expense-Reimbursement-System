@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Create Expense Reimbursement</title>
+<title>Edit Employee Info</title>
+<!-- Bootstrap core CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <style>
 html, body {
 	height: 100%;
@@ -59,6 +59,12 @@ form {
 	border-top-right-radius: 0;
 }
 
+.form-signin input[type="radio"] {
+	margin-bottom: 5px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
 .form-signin input[type="button"] {
 	margin-bottom: 5px;
 	border-bottom-right-radius: 0;
@@ -78,30 +84,12 @@ form {
 		font-size: 3.5rem;
 	}
 }
+
 </style>
 
-<script type="text/javascript">
-	function validateCreateNewExpense() {
-		var r_type = document.forms[0].elements[0].value;
-		var amount = document.forms[0].elements[1].value;
-		var comments = document.forms[0].elements[2].value;
 
-		if (r_type.length == 0) {
-			alert("Please enter a type of reimbursement");
-			return false;
-		} else if (amount.length == 0) {
-			alert("Please type an amount");
-			return false;
-		}
-		if (amount < 0) {
-			alert("Please enter a positive amount");
-			return false;
-		}
-	}
-</script>
 </head>
 <body class="text-center bg-dark">
-
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<header class="mb-auto">
 			<div>
@@ -113,63 +101,40 @@ form {
 				</nav>
 			</div>
 		</header>
+
 		<main class="form-signin">
-			Expense Reimbursement Detail Return back to Expense Reimbursements
-			<!--  
-Expense Reimbursement ID
-Type
-Created Date
-Status
-Comments
-Date
-Purpose
-Amount
-
-Attach Files
-Submit
-Save
--->
-			<form class="form-style" action="ReimbursementController"
-				onsubmit="return validateCreateNewExpense()" name="createNewExpense"
+			<form class="form-style" action="EditInfoController"
+				onsubmit="return validateEditInfoForm()" name="editinfoform"
 				method="post">
+			<h2 class="text-white">Welcome to the Edit Employee Information page!</h2>
 
-				<div class="form-floating">
-				<input type="text" class="form-control" name="r_type"
-						id="floatingInput" placeholder="Type"> <label
-						for="floatingInput">Amount</label>
-				<!--
-					<h4 class="text-white-50">Choose type of reimbursement:</h4> 
-					<select class="form-select">
-						<option value="r_type" name="r_type">Travel</option>
-					</select>
-				-->
+			<div class="form-floating">
+					<input type="text" class="form-control" name="username"
+						id="floatingInput" placeholder="Username"> <label
+						for="floatingInput">Username</label>
+				</div>
+			<div class="form-floating">
+					<input type="text" class="form-control" name="first_name"
+						id="floatingInput" placeholder="First Name"> <label
+						for="floatingInput">First Name</label>
 				</div>
 				<div class="form-floating">
-					<input type="text" class="form-control" name="amount"
-						id="floatingInput" placeholder="Password"> <label
-						for="floatingInput">Amount</label>
+					<input type="text" class="form-control" name="last_name"
+						id="floatingInput" placeholder="Last Name"> <label
+						for="floatingInput">Last Name</label>
 				</div>
-				<div class="form-floating">
-					<input type="text" class="form-control" name="comments"
-						id="floatingInput" placeholder="Confirm Password"> <label
-						for="floatingInput">Comments</label>
-				</div>
-
+				
+				<button class="w-40 btn btn-md btn-primary" type="submit"
+					value="editInfo">Submit</button>
 				<button class="w-40 btn btn-md btn-danger" type="reset"
 					value="Clear">Reset</button>
-				<button class="w-40 btn btn-md btn-primary" type="submit"
-					value="Submit">Submit</button>
-
 			</form>
+			<br/>
+
+			<a href="employeeInfo.jsp">View Information</a> <br /> <a
+				href="welcome.jsp">Back</a> <br /> <a href="index.jsp">Logout</a>
 		</main>
-		<br />
-		<button type="button" class="btn btn-light">
-			<a href="createNewExpense.jsp">Back</a>
-		</button>
-		<br />
-		<button type="button" class="btn btn-light">
-			<a href="index.jsp">Logout</a>
-		</button>
+
 		<footer class="mt-auto text-white-50"> Created by Thomas
 			Winter </footer>
 	</div>

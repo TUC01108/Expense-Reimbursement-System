@@ -88,6 +88,8 @@ footer {
 		<%}
 		%>
 </table>
+<a href="editEmployeeInfo.jsp">Edit Information</a>
+<br/>
 <a href="welcome.jsp">Back</a>
 <br/>
 <a href="index.jsp">Logout</a>
