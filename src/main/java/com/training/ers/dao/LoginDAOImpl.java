@@ -22,14 +22,13 @@ public class LoginDAOImpl implements LoginDAO {
 	List<Manager> managers = new ArrayList<Manager>();
 
 	@Override
-	public boolean register(User user) {
+	public boolean register(User user, String type) {
 		System.out.println("Adding user : " + user.getUsername());
 		PreparedStatement stat = null;
 		con = DBConnection.getConnection();
 		int rows = 0;
 
 		try {
-			//if(accounttype.equals("C")) {
 			stat = con.prepareStatement("insert into login values(default,?,?)");
 			stat.setString(1, user.getUsername());
 			stat.setString(2, user.getPassword());
@@ -49,40 +48,18 @@ public class LoginDAOImpl implements LoginDAO {
 			}
 			
 			
-			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?,?)");
+			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?,?,?)");
 			stat.setString(1, user.getUsername());
 			stat.setString(2, user.getPassword());
 			stat.setString(3, user.getFirstname());
 			stat.setString(4, user.getLastname());
 			stat.setString(5, user.getEmail());
 			stat.setInt(6, login_id);
+			stat.setString(7, type.substring(0,1));
 			
 			rows = stat.executeUpdate();
 			System.out.println(rows + " user added to database");
-			/*
-			stat = null;
-			rows = 0;
-			stat = con.prepareStatement("insert into login values(default,?,?)");
-			stat.setString(1, user.getUsername());
-			stat.setString(2, user.getPassword());
-			rows = stat.executeUpdate();
-			System.out.println(rows + " user registered successfully");
-			} else {
-				stat = con.prepareStatement("insert into employees values(default,?,?,?,default)");
-				stat.setString(1, firstname);
-				stat.setString(2, username);
-				stat.setString(3, password);
-				rows = stat.executeUpdate();
-				System.out.println(rows + " employee added to database");
-				
-				stat = null;
-				rows = 0;
-				stat = con.prepareStatement("insert into login values(default,?,?)");
-				stat.setString(1, username);
-				stat.setString(2, password);
-				rows = stat.executeUpdate();
-				System.out.println(rows + " user registered successfully");
-			}*/
+		
 			
 			stat.close();
 			con.close();
@@ -100,7 +77,7 @@ public class LoginDAOImpl implements LoginDAO {
 			return true;
 		}
 	}
-	
+	/*
 	@Override
 	public boolean register(Manager manager) {
 		System.out.println("Adding manager : " + manager.getUsername());
@@ -155,7 +132,7 @@ public class LoginDAOImpl implements LoginDAO {
 			logger.info(manager.getUsername()+" has registered at :"+new java.util.Date());
 			return true;
 		}
-	}
+	}*/
 
 	@Override
 	public boolean validate(String username, String password) {

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.training.ers.dao.EmployeeDAO;
+import com.training.ers.dao.EmployeeDAOImpl;
 import com.training.ers.dao.LoginDAO;
 import com.training.ers.dao.LoginDAOImpl;
 
@@ -55,12 +57,21 @@ public class LoginController extends HttpServlet {
 		
 		boolean result = loginDAO.validate(username, password);
 		
+		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+		boolean typeNum = employeeDAO.typeIs(username,password);
+		
 		if(result) {
 			session.setAttribute("message", "Valid User");
 			
 			out.println("Welcome, "+username);
+			if(typeNum) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
 			dispatcher.include(request, response);
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("welcomeManager.jsp");
+				dispatcher.include(request, response);
+			}
+			
 		} else {
 			session.setAttribute("message", "Invalid User");
 			
