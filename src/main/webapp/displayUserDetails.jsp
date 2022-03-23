@@ -59,7 +59,7 @@
 	List<User> users = loginDAO.getEmployees();
 	Iterator<User> iterator = users.iterator();
 	%>
-	<h4 align="center">List of all the users</h4>
+	<h4 align="center">List of All Employees</h4>
 	<table class="table table-dark">
 	<thead>
 	<tr>

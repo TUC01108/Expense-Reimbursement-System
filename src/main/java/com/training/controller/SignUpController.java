@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import com.training.ers.dao.LoginDAO;
 import com.training.ers.dao.LoginDAOImpl;
-import com.training.model.Manager;
 import com.training.model.User;
 
 /**

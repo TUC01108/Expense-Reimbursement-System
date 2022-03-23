@@ -65,6 +65,13 @@ form {
 	border-bottom-left-radius: 0;
 }
 
+.form-signin button {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -134,10 +141,10 @@ Save
 				method="post">
 
 				<div class="form-floating">
-				<input type="text" class="form-control" name="r_type"
+					<input type="text" class="form-control" name="r_type"
 						id="floatingInput" placeholder="Type"> <label
 						for="floatingInput">Type of Expense</label>
-				<!--
+					<!--
 					<h4 class="text-white-50">Choose type of reimbursement:</h4> 
 					<select class="form-select">
 						<option value="r_type" name="r_type">Travel</option>
@@ -154,22 +161,27 @@ Save
 						id="floatingInput" placeholder="Confirm Password"> <label
 						for="floatingInput">Comments</label>
 				</div>
-
+				<div class="form-floating">
 				<button class="w-40 btn btn-md btn-danger" type="reset"
 					value="Clear">Reset</button>
 				<button class="w-40 btn btn-md btn-primary" type="submit"
 					value="Submit">Submit</button>
-
+				</div>
+				<div class="form-floating">
+				<br />
+				<button type="button" class="btn btn-light">
+					<a href="createNewExpense.jsp">Back</a>
+				</button>
+				<br />
+				</div>
+				<div class="form-floating">
+				<button type="button" class="btn btn-light">
+					<a href="index.jsp">Logout</a>
+				</button>
+				</div>
 			</form>
 		</main>
-		<br />
-		<button type="button" class="btn btn-light">
-			<a href="createNewExpense.jsp">Back</a>
-		</button>
-		<br />
-		<button type="button" class="btn btn-light">
-			<a href="index.jsp">Logout</a>
-		</button>
+
 		<footer class="mt-auto text-white-50"> Created by Thomas
 			Winter </footer>
 	</div>

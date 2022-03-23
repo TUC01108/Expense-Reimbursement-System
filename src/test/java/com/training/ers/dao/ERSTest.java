@@ -45,15 +45,15 @@ class ERSTest {
 	@Test
 	@DisplayName("Testing login functionality of ERS")
 	public void testERSLoginFunctionality(){
-		driver.get("http://localhost:8080/Winter-ERS-Project1/login.html");
+		driver.get("http://localhost:8080/Winter-ERS-Project1/index.jsp");
 		driver.manage().window().maximize();
 		//locators
+		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("thomas");
+		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("rootroot");
+		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
 		
-		driver.findElement(By.id("username")).sendKeys("thomas");
-		driver.findElement(By.id("password")).sendKeys("rootroot");
-		driver.findElement(By.id("btnSubmit")).click();
-		
-		assertTrue(driver.findElement(By.id("searchUsers")).isDisplayed());
+		assertTrue(driver.findElement(By.id("viewallusers")).isDisplayed());
 	}
 	
 	

@@ -22,6 +22,12 @@
   	<description></description>
   	<servlet-class>com.training.controller.ReimbursementController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EditIController</servlet-name>
+  	<display-name>EditIController</display-name>
+  	<description></description>
+  	<servlet-class>com.training.controller.EditIController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LoginController</servlet-name>
   	<url-pattern>/LoginController</url-pattern>
@@ -41,5 +47,9 @@
   <servlet-mapping>
   	<servlet-name>ReimbursementController</servlet-name>
   	<url-pattern>/ReimbursementController</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditIController</servlet-name>
+  	<url-pattern>/EditIController</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -54,7 +54,7 @@
     <h1>Welcome to the ERS - Login and Signup page!</h1>
     <p class="lead"><% out.println(new java.util.Date()); %><br/></p>
     <p class="lead">
-      <a href="login.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">Login</a>
+      <a href="login.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black" btnLogin>Login</a>
       <a href="signUp.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white text-black">Signup</a>
     </p>
   </main>

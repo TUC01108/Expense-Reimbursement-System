@@ -118,9 +118,10 @@ form {
 		</header>
 
 		<main class="form-signin">
-			<form class="form-style" action="EditInfoController"
+			<form class="form-style" action="EditIController"
 				onsubmit="return validateEditInfoForm()" name="editinfoform"
 				method="post">
+				
 			<h2 class="text-white">Welcome to the Edit Employee Information page!</h2>
 			<div class="form-floating">
 					<input type="text" class="form-control" name="o_username"
@@ -149,7 +150,7 @@ form {
 				</div>
 
 				<button class="w-40 btn btn-md btn-primary" type="submit"
-					value="editInfo">Submit</button>
+					value="Submit">Submit</button>
 				<button class="w-40 btn btn-md btn-danger" type="reset"
 					value="Clear">Reset</button>
 					
