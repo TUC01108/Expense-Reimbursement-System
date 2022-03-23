@@ -14,6 +14,7 @@ public interface LoginDAO {
 	public List<User> getUsersByUsername(String username);
 	//public boolean isLoginExists(String username);
 	//public boolean apply(Customer customer, long balance, String accountName);
+	List<User> getEmployees();
 	
 
 }

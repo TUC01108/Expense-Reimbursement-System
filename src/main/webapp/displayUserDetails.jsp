@@ -56,7 +56,7 @@
 	
 	<%
 	LoginDAO loginDAO = new LoginDAOImpl();
-	List<User> users = loginDAO.getUsers();
+	List<User> users = loginDAO.getEmployees();
 	Iterator<User> iterator = users.iterator();
 	%>
 	<h4 align="center">List of all the users</h4>

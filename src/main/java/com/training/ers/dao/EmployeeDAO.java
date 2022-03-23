@@ -12,5 +12,5 @@ public interface EmployeeDAO {
 	public List<Reimbursement> getAllResolved();
 	public boolean createExpense(Reimbursement reimbursement);
 	public boolean typeIs(String username, String password);
-
+	public boolean editInfo(String o_username, String password, String username, String first_name, String last_name);
 }

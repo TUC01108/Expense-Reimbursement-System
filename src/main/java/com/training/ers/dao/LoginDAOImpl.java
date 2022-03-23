@@ -47,7 +47,7 @@ public class LoginDAOImpl implements LoginDAO {
 				login_id = user1.getUserId();
 			}
 			
-			
+			if(type != null) {
 			stat = con.prepareStatement("insert into users values(default,?,?,?,?,?,?,?)");
 			stat.setString(1, user.getUsername());
 			stat.setString(2, user.getPassword());
@@ -59,6 +59,19 @@ public class LoginDAOImpl implements LoginDAO {
 			
 			rows = stat.executeUpdate();
 			System.out.println(rows + " user added to database");
+			} else {
+				stat = con.prepareStatement("insert into users values(default,?,?,?,?,?,?)");
+				stat.setString(1, user.getUsername());
+				stat.setString(2, user.getPassword());
+				stat.setString(3, user.getFirstname());
+				stat.setString(4, user.getLastname());
+				stat.setString(5, user.getEmail());
+				stat.setInt(6, login_id);
+				
+				rows = stat.executeUpdate();
+				System.out.println(rows + " user added to database");
+				
+			}
 		
 			
 			stat.close();
@@ -268,6 +281,39 @@ public class LoginDAOImpl implements LoginDAO {
 			e.printStackTrace();
 		}
 		logger.info("User has viewed all users at :"+new java.util.Date());
+		return users;
+	}
+	
+	@Override
+	public List<User> getEmployees() {
+		con = DBConnection.getConnection();
+		System.out.println("Getting all employees");
+		List<User> users = new ArrayList<User>();
+		
+		Statement stat = null;
+		try {
+			stat = con.createStatement();
+			ResultSet res = stat.executeQuery("select * from users where accounttype = 'E'");
+			while(res.next()) {
+				User user = new User();
+				user.setUserId(res.getInt(1));
+				user.setUsername(res.getString(2));
+				user.setPassword(res.getString(3));
+				user.setFirstname(res.getString(4));
+				user.setLastname(res.getString(5));
+				user.setEmail(res.getString(6));
+				user.setLogin_id(res.getInt(7));
+				users.add(user);
+				
+			}
+			
+			res.close();
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		logger.info("User has viewed all employees at :"+new java.util.Date());
 		return users;
 	}
 

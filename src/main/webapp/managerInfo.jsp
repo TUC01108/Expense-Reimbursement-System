@@ -1,15 +1,16 @@
 <%@page import="java.util.Iterator"%>
-<%@page import="com.training.model.Reimbursement"%>
+<%@page import="com.training.model.User"%>
 <%@page import="java.util.List"%>
-<%@page import="com.training.ers.dao.EmployeeDAOImpl"%>
-<%@page import="com.training.ers.dao.EmployeeDAO"%>
+<%@page import="com.training.ers.dao.LoginDAOImpl"%>
+<%@page import="com.training.ers.dao.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Resolved Reimbursements</title>
+<title>Manager Info</title>
+<!-- Bootstrap core CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -37,8 +38,11 @@ footer {
 	padding-bottom: 5%;
 }
 </style>
+
+
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
+
 	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 		<header class="mb-auto">
 			<div>
@@ -50,44 +54,44 @@ footer {
 				</nav>
 			</div>
 		</header>
+
 		<main class="px-3">
-		<% String username = (String)session.getAttribute("username"); %>
-			<%
-			EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-				List<Reimbursement> reimbursements = employeeDAO.getResolvedReimbursements(username);
-				Iterator<Reimbursement> iterator = reimbursements.iterator();
+			<h1>Welcome to the Manager Information page!</h1>
+			<% String username = (String)session.getAttribute("username"); %>
+		
+	<%
+	LoginDAO loginDAO = new LoginDAOImpl();
+	List<User> users = loginDAO.getUsersByUsername(username);
+	Iterator<User> iterator = users.iterator();
+	%>
+	<h4 align="center">=================================================</h4>
+	<table class="table table-dark">
+	<thead>
+	<tr>
+		<th>Username</th>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		</tr>
+	</thead>
+		<%
+		while (iterator.hasNext()) {
+			User user = iterator.next();
+			
 			%>
-			<h4 align="center">List of All Resolved Reimbursements</h4>
-			<table class="table table-dark">
-				<thead>
-					<tr>
-						<th>Reimbursement Id</th>
-						<th>Type</th>
-						<th>Status</th>
-						<th>Amount</th>
-						<th>Created Date</th>
-						<th>Submitted Date</th>
-						
-					</tr>
-				</thead>
-				<%
-				while (iterator.hasNext()) {
-					Reimbursement reimbursement = iterator.next();
-				%>
-				<tr>
-					<td><%=reimbursement.getReimbursementId()%></td>
-					<td><%=reimbursement.getR_type()%></td>
-					<td><%=reimbursement.getStatus()%></td>
-					<td><%=reimbursement.getAmount()%></td>
-					<td><%=reimbursement.getCreated_date()%></td>
-					<td><%=reimbursement.getSubmitted_date()%></td>
-					
-				</tr>
-				<%
-				}
-				%>
-			</table>
-			<a href="welcome.jsp">Back</a> <br /> <a href="index.jsp">Logout</a>
+			<tr>
+			<td><%= user.getUsername() %></td>
+			<td><%= user.getFirstname() %></td>
+			<td><%= user.getLastname() %></td>
+			<td><%= user.getEmail() %></td>
+			</tr>
+		<%}
+		%>
+</table>
+
+<a href="welcomeManager.jsp">Back</a>
+<br/>
+<a href="index.jsp">Logout</a>
 		</main>
 
 		<footer class="mt-auto text-white-50"> Created by Thomas

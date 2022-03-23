@@ -136,7 +136,7 @@ Save
 				<div class="form-floating">
 				<input type="text" class="form-control" name="r_type"
 						id="floatingInput" placeholder="Type"> <label
-						for="floatingInput">Amount</label>
+						for="floatingInput">Type of Expense</label>
 				<!--
 					<h4 class="text-white-50">Choose type of reimbursement:</h4> 
 					<select class="form-select">

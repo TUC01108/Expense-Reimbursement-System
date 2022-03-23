@@ -214,5 +214,33 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 		return reimbursements;
 	}
+
+	@Override
+	public boolean editInfo(String o_username, String password, String username, String first_name, String last_name) {
+		con = DBConnection.getConnection();
+		PreparedStatement stat = null;
+		int rows = 0;
+		
+		try {
+			
+			stat = con.prepareStatement("update users set username = ?, first_name = ?, last_name = ? where username = ? and password = ? ");
+			stat.setString(1, username);
+			stat.setString(2, first_name);
+			stat.setString(3, last_name);
+			stat.setString(4, o_username);
+			stat.setString(5, password);
+
+			rows = stat.executeUpdate();
+			
+			stat.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (rows == 0)
+			return false;
+		else
+			return true;
+	}
 	
 }

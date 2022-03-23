@@ -67,7 +67,7 @@ footer {
 						<th>Amount</th>
 						<th>Created Date</th>
 						<th>Submitted Date</th>
-						<th>Username</th>
+						
 					</tr>
 				</thead>
 				<%
@@ -81,7 +81,7 @@ footer {
 					<td><%=reimbursement.getAmount()%></td>
 					<td><%=reimbursement.getCreated_date()%></td>
 					<td><%=reimbursement.getSubmitted_date()%></td>
-					<td><%=reimbursement.getUsername()%></td>
+					
 				</tr>
 				<%
 				}

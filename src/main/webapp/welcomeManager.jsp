@@ -51,7 +51,7 @@
 <h1><a href="approveOrDenyReimbursement.jsp" id="createNewExpense">Approve/Deny Pending Reimbursement Requests</a></h1>
 <h1><a href="allEmployeePending.jsp" id="viewPending">View All Pending Reimbursements</a></h1>
 <h1><a href="allEmployeeResolved.jsp" id="viewResolved">View All Resolved Reimbursements</a></h1>
-<h1><a href="employeeInfo.jsp" id="viewInfo">View Manager Information</a></h1>
+<h1><a href="managerInfo.jsp" id="viewInfo">View Manager Information</a></h1>
 
 </main>
 <a href="index.jsp">Logout</a>

@@ -47,25 +47,14 @@ form {
 	border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="email"] {
-	margin-bottom: 10px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
 .form-signin input[type="password"] {
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
 
-.form-signin input[type="radio"] {
-	margin-bottom: 5px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
 .form-signin input[type="button"] {
+	margin-top: 10px;
 	margin-bottom: 5px;
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
@@ -86,7 +75,33 @@ form {
 }
 
 </style>
+<script type="text/javascript">
+	function validateEditInfoForm() {
+		var o_username = document.forms[0].elements[0].value;
+		var password = document.forms[0].elements[1].value;
+		var username = document.forms[0].elements[2].value;
+		var first_name = document.forms[0].elements[3].value;
+		var last_name = document.forms[0].elements[4].value;
+		
 
+		if (o_username.length == 0) {
+			alert("Please type an original username");
+			return false;
+		} else if (password.length == 0) {
+			alert("Please type a password");
+			return false;
+		} else if (username.length == 0) {
+			alert("Please enter a new username");
+			return false;
+		} else if (first_name.length == 0) {
+			alert("Please enter a new first name");
+			return false;
+		} else if (last_name.length == 0) {
+			alert("Please enter a new last name");
+			return false;
+		}
+	}
+</script>
 
 </head>
 <body class="text-center bg-dark">
@@ -107,7 +122,16 @@ form {
 				onsubmit="return validateEditInfoForm()" name="editinfoform"
 				method="post">
 			<h2 class="text-white">Welcome to the Edit Employee Information page!</h2>
-
+			<div class="form-floating">
+					<input type="text" class="form-control" name="o_username"
+						id="floatingInput" placeholder="Original Username"> <label
+						for="floatingInput">Original Username</label>
+				</div>
+			<div class="form-floating">
+					<input type="password" class="form-control" name="password"
+						id="floatingInput" placeholder="Password"> <label
+						for="floatingInput">Password</label>
+				</div>
 			<div class="form-floating">
 					<input type="text" class="form-control" name="username"
 						id="floatingInput" placeholder="Username"> <label
@@ -123,16 +147,17 @@ form {
 						id="floatingInput" placeholder="Last Name"> <label
 						for="floatingInput">Last Name</label>
 				</div>
-				
+
 				<button class="w-40 btn btn-md btn-primary" type="submit"
 					value="editInfo">Submit</button>
 				<button class="w-40 btn btn-md btn-danger" type="reset"
 					value="Clear">Reset</button>
+					
 			</form>
 			<br/>
 
-			<a href="employeeInfo.jsp">View Information</a> <br /> <a
-				href="welcome.jsp">Back</a> <br /> <a href="index.jsp">Logout</a>
+			<a href="employeeInfo.jsp">Back to Information</a> <br /> <a
+				href="welcome.jsp">Homepage</a> <br /> <a href="index.jsp">Logout</a>
 		</main>
 
 		<footer class="mt-auto text-white-50"> Created by Thomas
