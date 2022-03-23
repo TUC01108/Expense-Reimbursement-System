@@ -51,8 +51,11 @@ form {
 </style>
 <script>
 function validate() {
+	
 	var uname = document.getElementById("username").value;
 	var pwd = document.getElementById("password").value;
+	var canSubmit = true;
+	
 	if(uname.length ==0) {
 	alert("Please enter username")
 	return false;
@@ -62,7 +65,10 @@ function validate() {
 	} else if (pwd.length < 6 || pwd.length > 12) {
 	alert("Please enter password between 6 and 12 characters in length.")
 	return false;
-	}
+	} 
+
+	
+	
 }
 </script>
 </head>
