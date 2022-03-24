@@ -46,7 +46,7 @@
   </header>
   <main class="px-3">
 <h2>You are logged in as : <%= (String)session.getAttribute("username") %></h2>
-<h1><a href="displayUserDetails.jsp" id="viewallusers">View All Users</a></h1>
+<h1><a href="displayUserDetails.jsp" id="viewallemployees">View All Employees</a></h1>
 <h1><a href="searchUser.jsp" id="searchUsers">Search Users</a></h1>
 <h1><a href="createNewExpense.jsp" id="createNewExpense">Create New Expense</a></h1>
 <h1><a href="allPendingReimbursements.jsp" id="viewPending">View All Pending Reimbursements</a></h1>

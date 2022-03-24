@@ -1,8 +1,9 @@
+<%@page import="com.training.ers.dao.LoginDAOImpl"%>
+<%@page import="com.training.ers.dao.LoginDAO"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.training.model.User"%>
 <%@page import="java.util.List"%>
-<%@page import="com.training.ers.dao.LoginDAOImpl"%>
-<%@page import="com.training.ers.dao.LoginDAO"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

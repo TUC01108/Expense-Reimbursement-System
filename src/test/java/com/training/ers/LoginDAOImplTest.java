@@ -1,4 +1,4 @@
-package com.training.ers.dao;
+package com.training.ers;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -7,6 +7,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.training.ers.dao.LoginDAO;
+import com.training.ers.dao.LoginDAOImpl;
 
 class LoginDAOImplTest {
 	

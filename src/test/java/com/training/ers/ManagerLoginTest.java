@@ -1,4 +1,4 @@
-package com.training.ers.dao;
+package com.training.ers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +15,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-class ERSTest {
+class ManagerLoginTest {
 	
 	String browserName ="edge";
 	WebDriver driver;
@@ -49,8 +49,9 @@ class ERSTest {
 		driver.manage().window().maximize();
 		//locators
 		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
-		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("thomas");
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("hank");
 		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("rootroot");
+		driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[2]")).click();
 		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
 		
 		assertTrue(driver.findElement(By.id("viewallusers")).isDisplayed());
