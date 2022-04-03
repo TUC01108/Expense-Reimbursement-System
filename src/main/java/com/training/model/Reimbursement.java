@@ -23,6 +23,17 @@ public class Reimbursement {
 		this.r_type = r_type;
 		this.amount = amount;
 	}
+	
+	
+
+
+
+	public Reimbursement(int reimbursementId, String r_type, long amount, String username) {
+		this.reimbursementId = reimbursementId;
+		this.r_type = r_type;
+		this.amount = amount;
+		this.username = username;
+	}
 
 
 

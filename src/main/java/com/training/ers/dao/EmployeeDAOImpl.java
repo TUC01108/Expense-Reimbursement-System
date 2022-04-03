@@ -96,7 +96,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			stat = con.prepareStatement("insert into reimbursement values(default,?,default,?,default,default,?)");
 			stat.setString(1, reimbursement.getR_type());
 			stat.setLong(2, reimbursement.getAmount());
-			stat.setString(3, "thomas");
+			stat.setString(3, reimbursement.getUsername());
 			rows = stat.executeUpdate();
 			System.out.println(rows + " create new expense added to database");
 			

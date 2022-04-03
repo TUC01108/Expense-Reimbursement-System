@@ -35,13 +35,14 @@ public class ReimbursementController extends HttpServlet {
 		// TODO Auto-generated method stub
 		String r_type = request.getParameter("r_type");
 		Long amount = Long.parseLong(request.getParameter("amount"));
+		String username = request.getParameter("username");
 		//String comments = request.getParameter("comments");
 		
 
 		HttpSession session = request.getSession();
 		session.setAttribute("r_type", r_type);
 		
-		Reimbursement reimbursement = new Reimbursement(-1, r_type, amount);
+		Reimbursement reimbursement = new Reimbursement(-1, r_type, amount, username);
 		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 		//User user = new User()
 		boolean result = employeeDAO.createExpense(reimbursement);

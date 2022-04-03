@@ -139,7 +139,11 @@ Save
 			<form class="form-style" action="ReimbursementController"
 				onsubmit="return validateCreateNewExpense()" name="createNewExpense"
 				method="post">
-
+				<div class="form-floating">
+					<input type="text" class="form-control" name="username"
+						id="floatingInput" placeholder="Username"> <label
+						for="floatingInput">Username</label>
+				</div>
 				<div class="form-floating">
 					<input type="text" class="form-control" name="r_type"
 						id="floatingInput" placeholder="Type"> <label
@@ -153,20 +157,25 @@ Save
 				</div>
 				<div class="form-floating">
 					<input type="text" class="form-control" name="amount"
-						id="floatingInput" placeholder="Password"> <label
+						id="floatingInput" placeholder="Amount"> <label
 						for="floatingInput">Amount</label>
 				</div>
+				
 				<div class="form-floating">
 					<input type="text" class="form-control" name="comments"
-						id="floatingInput" placeholder="Confirm Password"> <label
+						id="floatingInput" placeholder="Comments"> <label
 						for="floatingInput">Comments</label>
 				</div>
+				
+				
 				<div class="form-floating">
 				<button class="w-40 btn btn-md btn-danger" type="reset"
 					value="Clear">Reset</button>
 				<button class="w-40 btn btn-md btn-primary" type="submit"
 					value="Submit">Submit</button>
 				</div>
+				
+				
 				<div class="form-floating">
 				<br />
 				<button type="button" class="btn btn-light">
