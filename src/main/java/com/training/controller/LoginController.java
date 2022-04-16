@@ -58,9 +58,10 @@ public class LoginController extends HttpServlet {
 		boolean result = loginDAO.validate(username, password);
 		
 		EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-		boolean typeNum = employeeDAO.typeIs(username,password);
+		
 		
 		if(result) {
+			boolean typeNum = employeeDAO.typeIs(username,password);
 			session.setAttribute("message", "Valid User");
 			
 			out.println("Welcome, "+username);

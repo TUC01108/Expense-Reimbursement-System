@@ -49,9 +49,9 @@ class ManagerLoginTest {
 		driver.manage().window().maximize();
 		//locators
 		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
-		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("hank");
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("manager4");
 		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("rootroot");
-		driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[2]")).click();
+		//driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[2]")).click();
 		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
 		
 		assertTrue(driver.findElement(By.id("viewallusers")).isDisplayed());

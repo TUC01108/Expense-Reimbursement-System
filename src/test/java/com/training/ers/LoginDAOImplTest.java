@@ -29,8 +29,8 @@ class LoginDAOImplTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		loginDAO = new LoginDAOImpl();
-		username = "john";
-		password = "password";
+		username = "test";
+		password = "root123";
 	}
 
 	@AfterEach

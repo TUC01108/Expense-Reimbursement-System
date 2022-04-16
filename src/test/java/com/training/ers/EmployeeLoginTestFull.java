@@ -49,9 +49,9 @@ class EmployeeLoginTestFull {
 		driver.manage().window().maximize();
 		//locators
 		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
-		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("thomas");
-		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("rootroot");
-		driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("test");
+		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("root123");
+		//driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[1]")).click();
 		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
 		
 		// View All Employees

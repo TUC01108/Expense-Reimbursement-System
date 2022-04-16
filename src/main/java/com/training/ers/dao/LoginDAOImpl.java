@@ -174,7 +174,8 @@ public class LoginDAOImpl implements LoginDAO {
 			}
 			String type = user.getAccounttype();
 			System.out.println(type);
-			
+			if(type == null)
+				return false;
 			if(type.equals("E")) {
 			stat = con.prepareStatement("select * from users where username = ? and password = ? ");
 			stat.setString(1, username);
@@ -214,7 +215,7 @@ public class LoginDAOImpl implements LoginDAO {
 			res.close();
 			stat.close();
 			con.close();
-			} else {
+			} else if (type.equals("M")) {
 				
 				stat = con.prepareStatement("select * from managers where username = ? and password = ? ");
 				stat.setString(1, username);
@@ -230,6 +231,9 @@ public class LoginDAOImpl implements LoginDAO {
 					managers.add(manager);
 					
 				}
+			} else {
+				System.out.println("User with credentials not found. Try again.");
+				
 			}
 			/*
 			if(customer.getStatus() != null && customer.getStatus().equals("N")) {

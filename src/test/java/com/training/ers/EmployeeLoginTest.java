@@ -49,12 +49,27 @@ class EmployeeLoginTest {
 		driver.manage().window().maximize();
 		//locators
 		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
-		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("thomas");
-		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("rootroot");
-		driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("test");
+		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("root123");
+		//driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[1]")).click();
 		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
 		
+		
 		assertTrue(driver.findElement(By.id("viewallemployees")).isDisplayed());
+	}
+	
+	@Test
+	@DisplayName("Testing wrong credentials fail")
+	public void testERSWrongLoginFunctionality() {
+		driver.get("http://localhost:8080/Winter-ERS-Project1/index.jsp");
+		driver.manage().window().maximize();
+		driver.findElement(By.xpath("/html/body/div/main/p[2]/a[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"floatingInput\"]")).sendKeys("test2");
+		driver.findElement(By.xpath("//*[@id=\"floatingPassword\"]")).sendKeys("wrong");
+		//driver.findElement(By.xpath("/html/body/div/main/form/div[3]/label[1]")).click();
+		driver.findElement(By.xpath("/html/body/div/main/form/button")).click();
+		
+		assertTrue(driver.findElement(By.partialLinkText("login")).isDisplayed());
 	}
 	
 	
