@@ -11,6 +11,7 @@ ERS is an application that manages the process of reimbursing employees for expe
 * PostgreSQL - version 14.2
 * JavaScript - version 1.7
 * Selenium - version 4.1.3
+* Cucumber - version 7.2.3
 * JUnit - version 5.8.2
 * Log4J - version 1.2.17
 
@@ -86,5 +87,5 @@ Click view manager information to do so.
 
 ## License
 
-This project does not use any license.
+This project does not use any licenses.
 
